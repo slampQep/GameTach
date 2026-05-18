@@ -1,0 +1,776 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Личный кабинет - GameTech</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .account-hero {
+            padding: 48px 0 32px;
+        }
+        .account-hero h1 {
+            font-size: clamp(1.75rem, 4vw, 2.25rem);
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .account-hero p {
+            color: var(--text-secondary);
+            max-width: 560px;
+        }
+        .orders-summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+        .orders-summary .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 22px;
+            text-align: center;
+        }
+        .orders-summary .stat-value {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            margin-bottom: 6px;
+        }
+        .orders-summary .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+        .orders-block h2 {
+            font-size: 1.25rem;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+        .order-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 20px 22px;
+            margin-bottom: 16px;
+        }
+        .order-card-head {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 14px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+        .order-card-head time {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        .order-card-total {
+            font-weight: 700;
+            color: var(--accent-blue);
+            font-size: 1.1rem;
+        }
+        .order-lines {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .order-lines li {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 8px;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            font-size: 0.95rem;
+        }
+        .order-lines li:last-child {
+            border-bottom: none;
+        }
+        .order-lines .line-title {
+            flex: 1;
+            min-width: 160px;
+        }
+        .order-lines .line-title small {
+            display: block;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            margin-top: 2px;
+        }
+        .order-lines .line-meta {
+            color: var(--text-secondary);
+            white-space: nowrap;
+        }
+        .order-lines .line-sum {
+            font-weight: 600;
+            min-width: 100px;
+            text-align: right;
+        }
+        .orders-empty {
+            text-align: center;
+            padding: 48px 24px;
+            color: var(--text-secondary);
+            background: var(--bg-card);
+            border: 1px dashed var(--border);
+            border-radius: 14px;
+        }
+        .orders-empty a {
+            color: var(--accent-blue);
+        }
+        .user-greeting {
+            display: none;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+        .cabinet-cart-foot {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+        }
+        .account-spend-line {
+            margin-top: 16px;
+            padding: 14px 18px;
+            background: rgba(0, 255, 136, 0.08);
+            border: 1px solid rgba(0, 255, 136, 0.25);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-size: 1.05rem;
+            max-width: 640px;
+        }
+        .account-spend-line strong {
+            color: var(--accent-green);
+            font-size: 1.15em;
+        }
+        .user-profile-card {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 20px;
+            align-items: start;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 22px 24px;
+            margin-bottom: 28px;
+        }
+        .user-profile-card h2 {
+            font-size: 1.2rem;
+            margin: 0 0 6px;
+            color: var(--text-primary);
+        }
+        .user-profile-meta {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            margin: 4px 0;
+        }
+        .user-profile-meta code {
+            color: var(--accent-blue);
+            font-size: 0.88rem;
+        }
+        .user-profile-stats {
+            text-align: right;
+            min-width: 180px;
+        }
+        .user-profile-stats .spent {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-green);
+        }
+        @media (max-width: 640px) {
+            .user-profile-card {
+                grid-template-columns: 1fr;
+            }
+            .user-profile-stats {
+                text-align: left;
+            }
+        }
+        .order-head-main {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 1rem;
+        }
+        .order-head-main time {
+            color: var(--accent-blue);
+            font-weight: 600;
+        }
+        .order-head-sub {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+        .order-items-caption {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+        .item-type-tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 6px;
+            background: rgba(0, 163, 255, 0.15);
+            color: var(--accent-blue);
+            margin-bottom: 6px;
+        }
+        .line-title strong.purchase-title {
+            display: block;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-top: 2px;
+        }
+        .line-src {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+        .cabinet-cart-total {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <span>Личный кабинет | Корзина и история заказов</span>
+                <div class="top-bar-links">
+                    <a href="index.html">На главную</a>
+                    <a href="cart.html">Корзина</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <header class="site-header">
+        <div class="container">
+            <div class="header-main">
+                <a class="brand" href="index.html">
+                    <div class="logo-glow">
+                        <span style="color: white; font-size: 22px; font-weight: bold;">GT</span>
+                    </div>
+                    <span class="brand-name">GameTech</span>
+                </a>
+                <nav class="main-nav">
+                    <a class="nav-link" href="index.html">Главная</a>
+                    <a class="nav-link" href="pcs.html">Игровые ПК</a>
+                    <a class="nav-link" href="components.html">Комплектующие</a>
+                    <a class="nav-link" href="configurator.html">Конфигуратор</a>
+                    <span id="headerAuthNav"></span>
+                </nav>
+                <div class="header-actions">
+                    <div class="user-greeting" id="userGreeting">
+                        <span>Привет, <strong id="userDisplayName"></strong>!</span>
+                    </div>
+                    <button class="btn-cart">
+                        🛒 Корзина <span class="cart-badge">0</span>
+                    </button>
+                    <button type="button" class="btn btn-secondary" onclick="logout()" style="margin-left: 8px;">
+                        Выйти
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="categories-gaming account-hero">
+            <div class="container">
+                <h1>Личный кабинет</h1>
+                <p>Ваш профиль и покупки из базы данных: при оформлении заказа данные сохраняются в MySQL (таблицы <strong>users</strong>, <strong>orders</strong>, <strong>order_items</strong>).</p>
+                <p id="accountSpendLine" class="account-spend-line" style="display: none;"></p>
+                <p id="orderSavedFlash" class="account-spend-line" style="display: none; margin-top: 10px;"></p>
+            </div>
+        </section>
+
+        <section class="categories-gaming" style="padding-top: 0;">
+            <div class="container">
+                <div id="userProfileCard" class="user-profile-card" style="display: none;"></div>
+                <div class="orders-block" style="margin-bottom: 32px;">
+                    <h2>Текущая корзина</h2>
+                    <div id="cabinetCartRoot"></div>
+                </div>
+
+                <div class="orders-summary">
+                    <div class="stat-card">
+                        <div class="stat-value" id="statTotalRub">0 ₽</div>
+                        <div class="stat-label">Потрачено на покупки (всего)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="statOrdersCount">0</div>
+                        <div class="stat-label">Оформлено покупок (заказов)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="statItemsCount">0</div>
+                        <div class="stat-label">Товаров куплено (шт.)</div>
+                    </div>
+                </div>
+
+                <div class="orders-block">
+                    <h2>История заказов</h2>
+                    <div id="ordersRoot"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/crypto-js.min.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/header-auth.js"></script>
+    <script src="js/cart.js?v=7"></script>
+    <script>
+        (function () {
+            var ORDER_PREFIX = "order_history_v1";
+            var serverOrdersCache = null;
+            var serverProfileCache = null;
+
+            function safeParse(json, fallback) {
+                try {
+                    return JSON.parse(json);
+                } catch (e) {
+                    return fallback;
+                }
+            }
+
+            function orderHistoryKey() {
+                var u = safeParse(localStorage.getItem("currentUser") || "null", null);
+                var email = u && u.email ? String(u.email).trim().toLowerCase() : "";
+                return email ? ORDER_PREFIX + "__" + email : ORDER_PREFIX + "__guest";
+            }
+
+            function cartStorageKey() {
+                var u = safeParse(localStorage.getItem("currentUser") || "null", null);
+                var email = u && u.email ? String(u.email).trim().toLowerCase() : "";
+                return email ? "cart_items_v1__" + email : "cart_items_v1__guest";
+            }
+
+            function formatPrice(n) {
+                return Number(n || 0).toLocaleString("ru-RU") + " ₽";
+            }
+
+            function formatWhen(iso) {
+                try {
+                    return new Date(iso).toLocaleString("ru-RU", {
+                        day: "2-digit",
+                        month: "long",
+                        year: "numeric",
+                        hour: "2-digit",
+                        minute: "2-digit"
+                    });
+                } catch (e) {
+                    return iso || "—";
+                }
+            }
+
+            function dedupeOrders(orders) {
+                if (!Array.isArray(orders)) return [];
+                var db = orders.filter(function (o) {
+                    return String(o.id || "").indexOf("db_") === 0;
+                });
+                var local = orders.filter(function (o) {
+                    return String(o.id || "").indexOf("db_") !== 0;
+                });
+                local = local.filter(function (loc) {
+                    var lt = Number(loc.total || 0);
+                    var ltime = new Date(loc.createdAt || 0).getTime();
+                    return !db.some(function (d) {
+                        var dt = Number(d.total || 0);
+                        var dtime = new Date(d.createdAt || 0).getTime();
+                        return Math.abs(dtime - ltime) < 120000 && Math.abs(dt - lt) < 0.01;
+                    });
+                });
+                var merged = db.concat(local);
+                merged.sort(function (a, b) {
+                    return new Date(b.createdAt || 0).getTime() - new Date(a.createdAt || 0).getTime();
+                });
+                return merged;
+            }
+
+            function readOrders() {
+                var raw = localStorage.getItem(orderHistoryKey());
+                var list = safeParse(raw || "[]", []);
+                if (!Array.isArray(list)) list = [];
+                var srv = serverOrdersCache;
+                if (!srv || !srv.length) return dedupeOrders(list);
+                return dedupeOrders(srv.slice().concat(list));
+            }
+
+            function renderUserProfile() {
+                var card = document.getElementById("userProfileCard");
+                if (!card) return;
+                var u = safeParse(localStorage.getItem("currentUser") || "null", null);
+                if (!u || !u.email) {
+                    card.style.display = "none";
+                    return;
+                }
+                var prof = serverProfileCache && serverProfileCache.user;
+                var stats = serverProfileCache && serverProfileCache.stats;
+                var name = (prof && prof.name) || u.name || u.email.split("@")[0];
+                var email = (prof && prof.email) || u.email;
+                var reg = prof && prof.registeredAt ? formatWhen(prof.registeredAt) : "—";
+                var spent = stats ? formatPrice(stats.total_spent) : "—";
+                var ordersN = stats ? stats.orders_count : "—";
+                var itemsN = stats ? stats.items_count : "—";
+                var dbId = prof && prof.id ? "ID в базе: " + prof.id : "Профиль в базе не найден — оформите заказ после регистрации";
+
+                card.style.display = "grid";
+                card.innerHTML =
+                    "<div>" +
+                    "<h2>" +
+                    escapeHtml(name) +
+                    "</h2>" +
+                    '<p class="user-profile-meta">Email: <code>' +
+                    escapeHtml(email) +
+                    "</code></p>" +
+                    '<p class="user-profile-meta">Регистрация: ' +
+                    escapeHtml(reg) +
+                    "</p>" +
+                    '<p class="user-profile-meta">' +
+                    escapeHtml(dbId) +
+                    "</p>" +
+                    "</div>" +
+                    '<div class="user-profile-stats">' +
+                    '<div class="spent">' +
+                    spent +
+                    "</div>" +
+                    '<p class="user-profile-meta">потрачено на покупки</p>' +
+                    '<p class="user-profile-meta">Заказов: <strong>' +
+                    ordersN +
+                    "</strong> · товаров: <strong>" +
+                    itemsN +
+                    " шт.</strong></p>" +
+                    "</div>";
+            }
+
+            function fetchUserProfile() {
+                var u = safeParse(localStorage.getItem("currentUser") || "null", null);
+                if (!u || !u.email) {
+                    serverOrdersCache = [];
+                    serverProfileCache = null;
+                    return Promise.resolve();
+                }
+                var email = String(u.email).trim().toLowerCase();
+                return fetch("api/user_profile.php?email=" + encodeURIComponent(email))
+                    .then(function (r) {
+                        return r.json();
+                    })
+                    .then(function (data) {
+                        if (data && data.ok) {
+                            serverProfileCache = data;
+                            serverOrdersCache = Array.isArray(data.orders) ? data.orders : [];
+                        } else {
+                            serverProfileCache = null;
+                            serverOrdersCache = [];
+                        }
+                    })
+                    .catch(function () {
+                        serverProfileCache = null;
+                        serverOrdersCache = [];
+                    });
+            }
+
+            function typeLabelRu(type) {
+                var m = {
+                    pc: "Готовый ПК",
+                    build: "Сборка (конфигуратор)",
+                    item: "Товар",
+                    peripheral: "Периферия",
+                    component: "Комплектующее"
+                };
+                var t = type ? String(type) : "item";
+                return m[t] || m.item;
+            }
+
+            function itemSourceCaption(source) {
+                if (!source || !String(source).trim()) return "";
+                return "Раздел сайта: " + String(source).trim();
+            }
+
+            function buildPurchaseLineHtml(it) {
+                var qty = Number(it.qty || 1);
+                var price = Number(it.price || 0);
+                var lt = Number(it.lineTotal != null ? it.lineTotal : price * qty);
+                var tag = typeLabelRu(it.type);
+                var src = it.source ? '<span class="line-src">' + escapeHtml(itemSourceCaption(it.source)) + "</span>" : "";
+                var h =
+                    "<li>" +
+                    '<div class="line-title">' +
+                    '<span class="item-type-tag">' +
+                    escapeHtml(tag) +
+                    "</span>" +
+                    '<strong class="purchase-title">' +
+                    escapeHtml(it.title || "Товар") +
+                    "</strong>";
+                if (it.subtitle) h += "<small>" + escapeHtml(it.subtitle) + "</small>";
+                h += src;
+                h +=
+                    "</div>" +
+                    '<span class="line-meta">' +
+                    formatPrice(price) +
+                    " × " +
+                    qty +
+                    " шт." +
+                    "</span>" +
+                    '<span class="line-sum">Сумма: ' +
+                    formatPrice(lt) +
+                    "</span>" +
+                    "</li>";
+                return h;
+            }
+
+            function aggregateAllLines(orders) {
+                var map = {};
+                orders.forEach(function (ord) {
+                    (ord.items || []).forEach(function (it) {
+                        var key = (it.title || "Товар") + "|" + String(it.price || 0);
+                        if (!map[key]) {
+                            map[key] = { title: it.title || "Товар", subtitle: it.subtitle || "", price: Number(it.price || 0), qty: 0, sum: 0 };
+                        }
+                        var q = Number(it.qty || 1);
+                        map[key].qty += q;
+                        map[key].sum += Number(it.lineTotal != null ? it.lineTotal : (Number(it.price || 0) * q));
+                    });
+                });
+                return Object.keys(map).map(function (k) { return map[k]; });
+            }
+
+            function checkAuthPage() {
+                var user = safeParse(localStorage.getItem("currentUser") || "null", null);
+                if (!user || !user.loggedIn) {
+                    window.location.href = "login.html";
+                    return false;
+                }
+                var greet = document.getElementById("userGreeting");
+                var nameEl = document.getElementById("userDisplayName");
+                if (greet && nameEl) {
+                    nameEl.textContent = user.name || (user.email ? user.email.split("@")[0] : "пользователь");
+                    greet.style.display = "flex";
+                }
+                return true;
+            }
+
+            function renderCurrentCart() {
+                var root = document.getElementById("cabinetCartRoot");
+                if (!root) return;
+
+                var items =
+                    window.GameTechCart && typeof window.GameTechCart.readItems === "function"
+                        ? window.GameTechCart.readItems()
+                        : [];
+
+                if (!items.length) {
+                    root.innerHTML =
+                        '<div class="orders-empty" style="padding:28px;">' +
+                        "<p>Корзина пуста.</p>" +
+                        '<p style="margin-top:10px;">Добавьте товары с каталога или <a href="configurator.html">конфигуратора</a> — они появятся здесь и в <a href="cart.html">корзине</a>.</p>' +
+                        "</div>";
+                    return;
+                }
+
+                var total = 0;
+                var count = 0;
+                items.forEach(function (it) {
+                    var q = Number(it.qty || 1);
+                    var p = Number(it.price || 0);
+                    count += q;
+                    total += p * q;
+                });
+
+                var html = '<div class="order-card" style="margin-bottom:0;">';
+                html += "<ul class=\"order-lines\">";
+                items.forEach(function (it) {
+                    var q = Number(it.qty || 1);
+                    var p = Number(it.price || 0);
+                    var line = p * q;
+                    html += "<li>";
+                    html += "<div class=\"line-title\">" + escapeHtml(it.title || "Товар");
+                    if (it.subtitle) html += "<small>" + escapeHtml(it.subtitle) + "</small>";
+                    html += "</div>";
+                    html += "<span class=\"line-meta\">" + q + " × " + formatPrice(p) + "</span>";
+                    html += "<span class=\"line-sum\">" + formatPrice(line) + "</span>";
+                    html += "</li>";
+                });
+                html += "</ul>";
+                html += '<div class="cabinet-cart-foot">';
+                html += "<span class=\"cabinet-cart-total\">Итого: " + formatPrice(total) + " (" + count + " шт.)</span>";
+                html += "<a class=\"btn btn-primary\" href=\"cart.html\">Перейти в корзину</a>";
+                html += "</div></div>";
+
+                root.innerHTML = html;
+            }
+
+            function render() {
+                renderCurrentCart();
+
+                var orders = readOrders();
+                var totalRub = orders.reduce(function (s, o) {
+                    return s + Number(o.total || 0);
+                }, 0);
+                var linesAll = aggregateAllLines(orders);
+                var pieces = linesAll.reduce(function (s, L) {
+                    return s + L.qty;
+                }, 0);
+
+                document.getElementById("statTotalRub").textContent = formatPrice(totalRub);
+                document.getElementById("statOrdersCount").textContent = String(orders.length);
+                document.getElementById("statItemsCount").textContent = String(pieces);
+
+                var spendEl = document.getElementById("accountSpendLine");
+                if (spendEl) {
+                    if (orders.length > 0 && totalRub > 0) {
+                        spendEl.style.display = "block";
+                        spendEl.innerHTML =
+                            "На покупки потрачено <strong>" +
+                            formatPrice(totalRub) +
+                            "</strong> — оформлено заказов: <strong>" +
+                            orders.length +
+                            "</strong>. Ниже перечислены <strong>конкретные товары</strong> по каждой покупке и сводка за всё время.";
+                    } else {
+                        spendEl.style.display = "none";
+                        spendEl.innerHTML = "";
+                    }
+                }
+
+                var root = document.getElementById("ordersRoot");
+                if (!root) return;
+
+                if (!orders.length) {
+                    root.innerHTML =
+                        '<div class="orders-empty">' +
+                        "<p>Пока нет оформленных покупок.</p>" +
+                        '<p style="margin-top:12px;">Положите товары в <a href="cart.html">корзину</a> и нажмите «Оформить заказ» — здесь появится сумма и список купленных позиций.</p>' +
+                        "</div>";
+                    return;
+                }
+
+                var html = "";
+                html += '<div class="order-card" style="margin-bottom:24px;">';
+                html +=
+                    "<h3 style=\"font-size:1rem;margin-bottom:6px;color:var(--text-primary);\">Сводка: на какие товары ушло больше всего</h3>";
+                html +=
+                    "<p style=\"color:var(--text-secondary);font-size:0.9rem;margin-bottom:14px;\">По всем заказам вместе — название, сколько штук купили и на какую сумму.</p>";
+                html += "<ul class=\"order-lines\">";
+                linesAll.forEach(function (L) {
+                    html += "<li>";
+                    html += '<div class="line-title"><strong class="purchase-title">' + escapeHtml(L.title) + "</strong>";
+                    if (L.subtitle) html += "<small>" + escapeHtml(L.subtitle) + "</small>";
+                    html += "</div>";
+                    html +=
+                        '<span class="line-meta">Всего куплено: ' +
+                        L.qty +
+                        " шт. по " +
+                        formatPrice(L.price) +
+                        "</span>";
+                    html += '<span class="line-sum">Итого: ' + formatPrice(L.sum) + "</span>";
+                    html += "</li>";
+                });
+                html += "</ul></div>";
+
+                orders.forEach(function (ord, idx) {
+                    var items = ord.items || [];
+                    var sumQty = items.reduce(function (a, it) {
+                        return a + Number(it.qty || 1);
+                    }, 0);
+                    var orderNo = orders.length - idx;
+                    html += '<div class="order-card">';
+                    html += '<div class="order-card-head">';
+                    html +=
+                        '<div><div class="order-head-main">Покупка №' +
+                        orderNo +
+                        " — <time>" +
+                        formatWhen(ord.createdAt) +
+                        "</time></div>";
+                    html +=
+                        '<div class="order-head-sub">В этом заказе ' +
+                        items.length +
+                        " наименований, товаров по штукам: " +
+                        sumQty +
+                        "</div></div>";
+                    html += '<div class="order-card-total">Сумма заказа: ' + formatPrice(ord.total) + "</div>";
+                    html += "</div>";
+                    html += '<p class="order-items-caption">Состав заказа — что именно купили</p>';
+                    html += "<ul class=\"order-lines\">";
+                    items.forEach(function (it) {
+                        html += buildPurchaseLineHtml(it);
+                    });
+                    html += "</ul></div>";
+                });
+
+                root.innerHTML = html;
+            }
+
+            function escapeHtml(s) {
+                var d = document.createElement("div");
+                d.textContent = s;
+                return d.innerHTML;
+            }
+
+            function bindRefreshCart() {
+                function refreshAllIfCabinet() {
+                    var u = safeParse(localStorage.getItem("currentUser") || "null", null);
+                    if (!u || !u.loggedIn) return;
+                    if (!document.getElementById("cabinetCartRoot")) return;
+                    fetchUserProfile().then(function () {
+                        renderUserProfile();
+                        render();
+                    });
+                    if (window.GameTechCart && typeof window.GameTechCart.updateHeaderCart === "function") {
+                        window.GameTechCart.updateHeaderCart();
+                    }
+                }
+
+                window.addEventListener("gametech-cart-changed", refreshAllIfCabinet);
+
+                window.addEventListener("storage", function (e) {
+                    if (!e.key) return;
+                    var u = safeParse(localStorage.getItem("currentUser") || "null", null);
+                    if (!u || !u.loggedIn) return;
+                    if (!document.getElementById("cabinetCartRoot")) return;
+                    if (e.key !== cartStorageKey() && e.key !== orderHistoryKey()) return;
+                    refreshAllIfCabinet();
+                });
+
+                window.addEventListener("pageshow", refreshAllIfCabinet);
+            }
+
+            document.addEventListener("DOMContentLoaded", function () {
+                if (!checkAuthPage()) return;
+                var flash = document.getElementById("orderSavedFlash");
+                if (flash) {
+                    try {
+                        if (sessionStorage.getItem("gametech_order_saved") === "1") {
+                            sessionStorage.removeItem("gametech_order_saved");
+                            flash.style.display = "block";
+                            flash.textContent =
+                                "Заказ сохранён в истории покупок ниже. Корзина очищена.";
+                        }
+                    } catch (e) {}
+                }
+                render();
+                bindRefreshCart();
+                fetchUserProfile().then(function () {
+                    renderUserProfile();
+                    render();
+                });
+            });
+        })();
+    </script>
+</body>
+</html>

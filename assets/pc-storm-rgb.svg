@@ -1,0 +1,47 @@
+<svg width="640" height="400" viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="caseGlow3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#00ff88"/>
+      <stop offset="0.5" stop-color="#00a3ff"/>
+      <stop offset="1" stop-color="#8a2be2"/>
+    </linearGradient>
+    <linearGradient id="fanRing3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#00ff88"/>
+      <stop offset="0.5" stop-color="#00a3ff"/>
+      <stop offset="1" stop-color="#ff00ff"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="640" height="400" fill="#05070b"/>
+  <rect x="40" y="40" width="560" height="320" rx="28" fill="#060811" stroke="#23263a" stroke-width="2.5"/>
+
+  <!-- корпус -->
+  <rect x="120" y="70" width="190" height="260" rx="18" fill="#05070b" stroke="url(#caseGlow3)" stroke-width="4"/>
+  <rect x="130" y="80" width="170" height="240" rx="14" fill="#05070b" stroke="#1b2133" stroke-width="2"/>
+
+  <!-- три RGB вентилятора -->
+  <circle cx="205" cy="130" r="34" fill="#05070b" stroke="url(#fanRing3)" stroke-width="6"/>
+  <circle cx="205" cy="130" r="16" fill="#05070b"/>
+
+  <circle cx="205" cy="200" r="34" fill="#05070b" stroke="url(#fanRing3)" stroke-width="6"/>
+  <circle cx="205" cy="200" r="16" fill="#05070b"/>
+
+  <circle cx="205" cy="270" r="34" fill="#05070b" stroke="url(#fanRing3)" stroke-width="6"/>
+  <circle cx="205" cy="270" r="16" fill="#05070b"/>
+
+  <!-- вертикальная RGB полоса -->
+  <rect x="145" y="90" width="8" height="220" rx="4" fill="url(#fanRing3)" opacity="0.7"/>
+
+  <!-- правая часть -->
+  <text x="350" y="150" fill="#ffffff" font-family="Segoe UI, system-ui" font-size="24" font-weight="600">
+    STORM RGB
+  </text>
+  <text x="350" y="178" fill="#8fe4ff" font-family="Segoe UI, system-ui" font-size="15">
+    RTX 4080 Super • 4K RGB
+  </text>
+  <text x="350" y="210" fill="#9aa3c5" font-family="Segoe UI, system-ui" font-size="13">
+    Максимальная производительность и яркая RGB‑подсветка для 4K‑гейминга.
+  </text>
+</svg>
+
+

@@ -1,0 +1,535 @@
+﻿    <!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Игровые ПК - GameTech</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Верхняя панель -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <span>🎮 Подбор готовых игровых ПК</span>
+                <div class="top-bar-links">
+                    <a href="index.html#free-assembly">Бесплатная сборка</a>
+                    <a href="index.html#testing-24h">Тестирование 24ч</a>
+                    <a href="index.html#credit">Рассрочка 0%</a>
+                    <a href="admin.html" class="admin-footer-link" id="topAdminLink">Админ-панель</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Хедер -->
+    <header class="site-header">
+        <div class="container">
+            <div class="header-main">
+                <a class="brand" href="index.html">
+                    <div class="logo-glow">
+                        <span style="color: white; font-size: 24px; font-weight: bold;">GT</span>
+                    </div>
+                    <span class="brand-name">GameTech</span>
+                </a>
+
+                <nav class="main-nav">
+                    <a class="nav-link" href="index.html">Главная</a>
+                    <a class="nav-link active" href="pcs.html">Игровые ПК</a>
+                    <a class="nav-link" href="components.html">Комплектующие</a>
+                    <a class="nav-link" href="periphery.html">Периферия</a>
+                    <a class="nav-link" href="configurator.html">Конфигуратор</a>
+                    <span id="headerAuthNav"></span>
+                </nav>
+
+                <div class="header-actions">
+                    <button class="btn-icon" title="Поиск">🔍</button>
+                    <button class="btn-icon" title="Избранное">❤️</button>
+                    <button class="btn-cart">
+                        🛒 Корзина
+                        <span class="cart-badge">0</span>
+                    </button>
+                    <a href="admin.html" class="admin-link" id="adminLink">👑 Админ</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="featured-builds">
+            <div class="container">
+                <div class="section-header">
+                    <h1 class="section-title">Игровые ПК</h1>
+                    <a href="configurator.html" class="section-link">Или собрать свой →</a>
+                </div>
+
+                <p style="color: var(--text-secondary); margin-bottom: 30px;">
+                    Подборка готовых конфигураций: от базовых офисно‑игровых до жёстких 4K‑машин.
+                    Все данные сейчас статические, работают как витрина для демонстрации сайта.
+                </p>
+
+                <div class="builds-grid catalog-builds-grid">
+                    <!-- Бюджетный вариант -->
+                    <div class="build-card wb-style-card">
+                        <div class="build-badge">ХИТ</div>
+                        <div class="wb-card-top-actions">
+                            <button class="wb-icon-btn" type="button" aria-label="Добавить в избранное">♡</button>
+                            <button class="wb-icon-btn" type="button" aria-label="Сравнить">⇄</button>
+                        </div>
+                        <div class="build-image pc-photo-frame">
+                            <img src="assets/pcs/pc-01.png" alt="CYBER GAMER — игровой ПК" loading="lazy">
+                        </div>
+                        <div class="build-info">
+                            <div class="wb-rating-row">★ 4.8 · 152 отзыва</div>
+                            <h3 class="build-title">CYBER GAMER</h3>
+                            <p class="build-subtitle">RTX 3050 • ENTRY GAMER</p>
+                            <div class="build-specs">
+                                <div class="spec-item">
+                                    <span>Видеокарта</span>
+                                    <strong>GeForce RTX 3050 8 GB</strong>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Процессор</span>
+                                    <strong>Intel i3‑12100F</strong>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Материнская плата</span>
+                                    <strong>H610M</strong>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Оперативная память</span>
+                                    <strong>16 GB DDR4</strong>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Накопитель</span>
+                                    <strong>SSD 512 GB NVMe</strong>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Блок питания</span>
+                                    <strong>600 W 80+</strong>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Система охлаждения</span>
+                                    <strong>Воздушная</strong>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Игровой профиль</span>
+                                    <strong>CS2 / Dota 2 / Valorant</strong>
+                                </div>
+                            </div>
+                            <div class="build-price wb-price-block">
+                                <span class="current-price">59 990 ₽</span>
+                                <span class="wb-old-price">72 990 ₽</span>
+                                <span class="wb-discount">-18%</span>
+                                <span class="monthly-payment">от 2 500 ₽/мес</span>
+                            </div>
+                            <p class="wb-delivery-note">Завтра доставим курьером по городу</p>
+                            <div class="build-actions">
+                                <button class="btn wb-buy-btn">В корзину</button>
+                                <button class="btn wb-secondary-btn">Подробнее</button>
+                            </div>
+                            <div class="reviews-block" data-product-type="pc_build" data-product-id="cyber-gamer" data-product-title="CYBER GAMER">
+                                <div class="reviews-summary"></div>
+                                <ul class="reviews-list"></ul>
+                                <p class="review-form-message"></p>
+                                <div class="review-form"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Сбалансированный вариант -->
+                    <div class="build-card wb-style-card">
+                        <div class="build-badge pro">PRO</div>
+                        <div class="wb-card-top-actions">
+                            <button class="wb-icon-btn" type="button" aria-label="Добавить в избранное">♡</button>
+                            <button class="wb-icon-btn" type="button" aria-label="Сравнить">⇄</button>
+                        </div>
+                        <div class="build-image pc-photo-frame">
+                            <img src="assets/pcs/pc-06.png" alt="TITAN ULTRA — игровой ПК" loading="lazy">
+                        </div>
+                        <div class="build-info">
+                            <div class="wb-rating-row">★ 4.9 · 203 отзыва</div>
+                            <h3 class="build-title">TITAN ULTRA</h3>
+                            <p class="build-subtitle">RTX 4060 Ti • PRO GAMING</p>
+                            <div class="build-specs">
+                                <div class="spec-item">
+                                    <span>Видеокарта</span>
+                                    <strong>RTX 4060 Ti 8 GB</strong>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Процессор</span>
+                                    <strong>Ryzen 5 7600</strong>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Материнская плата</span>
+                                    <strong>B650</strong>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Оперативная память</span>
+                                    <strong>32 GB DDR5</strong>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Накопитель</span>
+                                    <strong>SSD 1 TB NVMe</strong>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Блок питания</span>
+                                    <strong>750 W 80+ Gold</strong>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Система охлаждения</span>
+                                    <strong>Башенный кулер</strong>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Игровой профиль</span>
+                                    <strong>1440p High / Ultra</strong>
+                                </div>
+                            </div>
+                            <div class="build-price wb-price-block">
+                                <span class="current-price">99 990 ₽</span>
+                                <span class="wb-old-price">117 990 ₽</span>
+                                <span class="wb-discount">-15%</span>
+                                <span class="monthly-payment">от 4 200 ₽/мес</span>
+                            </div>
+                            <p class="wb-delivery-note">Доставка и запуск в течение 24 часов</p>
+                            <div class="build-actions">
+                                <button class="btn wb-buy-btn">В корзину</button>
+                                <button class="btn wb-secondary-btn">Подробнее</button>
+                            </div>
+                            <div class="reviews-block" data-product-type="pc_build" data-product-id="titan-ultra" data-product-title="TITAN ULTRA">
+                                <div class="reviews-summary"></div>
+                                <ul class="reviews-list"></ul>
+                                <p class="review-form-message"></p>
+                                <div class="review-form"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4K вариант -->
+                    <div class="build-card wb-style-card">
+                        <div class="build-badge new">NEW</div>
+                        <div class="wb-card-top-actions">
+                            <button class="wb-icon-btn" type="button" aria-label="Добавить в избранное">♡</button>
+                            <button class="wb-icon-btn" type="button" aria-label="Сравнить">⇄</button>
+                        </div>
+                        <div class="build-image pc-photo-frame">
+                            <img src="assets/pcs/pc-05.png" alt="STORM RGB — игровой ПК" loading="lazy">
+                        </div>
+                        <div class="build-info">
+                            <div class="wb-rating-row">★ 4.7 · 89 отзывов</div>
+                            <h3 class="build-title">STORM RGB</h3>
+                            <p class="build-subtitle">RTX 4080 Super • 4K RGB</p>
+                            <div class="build-specs">
+                                <div class="spec-item">
+                                    <span>Видеокарта</span>
+                                    <strong>RTX 4080 Super 16 GB</strong>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Процессор</span>
+                                    <strong>Intel i7‑14700K</strong>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Материнская плата</span>
+                                    <strong>Z790</strong>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Оперативная память</span>
+                                    <strong>32 GB DDR5</strong>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Накопитель</span>
+                                    <strong>SSD 2 TB NVMe</strong>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Блок питания</span>
+                                    <strong>850 W 80+ Gold</strong>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Система охлаждения</span>
+                                    <strong>СЖО 240 мм</strong>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Игровой профиль</span>
+                                    <strong>4K Ultra / RT</strong>
+                                </div>
+                            </div>
+                            <div class="build-price wb-price-block">
+                                <span class="current-price">189 990 ₽</span>
+                                <span class="wb-old-price">214 990 ₽</span>
+                                <span class="wb-discount">-12%</span>
+                                <span class="monthly-payment">от 7 900 ₽/мес</span>
+                            </div>
+                            <p class="wb-delivery-note">Премиум-сборка, готовность за 1-2 дня</p>
+                            <div class="build-actions">
+                                <button class="btn wb-buy-btn">В корзину</button>
+                                <button class="btn wb-secondary-btn">Подробнее</button>
+                            </div>
+                            <div class="reviews-block" data-product-type="pc_build" data-product-id="storm-rgb" data-product-title="STORM RGB">
+                                <div class="reviews-summary"></div>
+                                <ul class="reviews-list"></ul>
+                                <p class="review-form-message"></p>
+                                <div class="review-form"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Дополнительная сборка 4 -->
+                    <div class="build-card wb-style-card">
+                        <div class="build-badge">ТОП</div>
+                        <div class="wb-card-top-actions">
+                            <button class="wb-icon-btn" type="button" aria-label="Добавить в избранное">♡</button>
+                            <button class="wb-icon-btn" type="button" aria-label="Сравнить">⇄</button>
+                        </div>
+                        <div class="build-image pc-photo-frame">
+                            <img src="assets/pcs/pc-04.png" alt="FROST BLADE — игровой ПК" loading="lazy">
+                        </div>
+                        <div class="build-info">
+                            <div class="wb-rating-row">★ 4.8 · 141 отзыв</div>
+                            <h3 class="build-title">FROST BLADE</h3>
+                            <p class="build-subtitle">RTX 3060 • FPS START</p>
+                            <div class="build-specs">
+                                <div class="spec-item"><span>Видеокарта</span><strong>RTX 3060 12 GB</strong></div>
+                                <div class="spec-item"><span>Процессор</span><strong>Ryzen 5 5600</strong></div>
+                                <div class="spec-item"><span>Материнская плата</span><strong>B550M</strong></div>
+                                <div class="spec-item"><span>Оперативная память</span><strong>16 GB DDR4</strong></div>
+                                <div class="spec-item"><span>Накопитель</span><strong>SSD 1 TB NVMe</strong></div>
+                                <div class="spec-item"><span>Блок питания</span><strong>650 W 80+ Bronze</strong></div>
+                                <div class="spec-item"><span>Игровой профиль</span><strong>1080p High</strong></div>
+                            </div>
+                            <div class="build-price wb-price-block">
+                                <span class="current-price">74 990 ₽</span>
+                                <span class="wb-old-price">87 990 ₽</span>
+                                <span class="wb-discount">-15%</span>
+                                <span class="monthly-payment">от 3 100 ₽/мес</span>
+                            </div>
+                            <p class="wb-delivery-note">Доставка завтра, бесплатный тест 12 часов</p>
+                            <div class="build-actions">
+                                <button class="btn wb-buy-btn">В корзину</button>
+                                <button class="btn wb-secondary-btn">Подробнее</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Дополнительная сборка 5 -->
+                    <div class="build-card wb-style-card">
+                        <div class="build-badge pro">PRO</div>
+                        <div class="wb-card-top-actions">
+                            <button class="wb-icon-btn" type="button" aria-label="Добавить в избранное">♡</button>
+                            <button class="wb-icon-btn" type="button" aria-label="Сравнить">⇄</button>
+                        </div>
+                        <div class="build-image pc-photo-frame">
+                            <img src="assets/pcs/pc-08.png" alt="PHANTOM CORE — игровой ПК" loading="lazy">
+                        </div>
+                        <div class="build-info">
+                            <div class="wb-rating-row">★ 4.9 · 188 отзывов</div>
+                            <h3 class="build-title">PHANTOM CORE</h3>
+                            <p class="build-subtitle">RTX 4070 • ULTRA 1440P</p>
+                            <div class="build-specs">
+                                <div class="spec-item"><span>Видеокарта</span><strong>RTX 4070 12 GB</strong></div>
+                                <div class="spec-item"><span>Процессор</span><strong>Ryzen 7 7700</strong></div>
+                                <div class="spec-item"><span>Материнская плата</span><strong>B650</strong></div>
+                                <div class="spec-item"><span>Оперативная память</span><strong>32 GB DDR5</strong></div>
+                                <div class="spec-item"><span>Накопитель</span><strong>SSD 1 TB NVMe</strong></div>
+                                <div class="spec-item"><span>Блок питания</span><strong>750 W 80+ Gold</strong></div>
+                                <div class="spec-item"><span>Игровой профиль</span><strong>1440p Ultra + RT</strong></div>
+                            </div>
+                            <div class="build-price wb-price-block">
+                                <span class="current-price">124 990 ₽</span>
+                                <span class="wb-old-price">143 990 ₽</span>
+                                <span class="wb-discount">-13%</span>
+                                <span class="monthly-payment">от 5 200 ₽/мес</span>
+                            </div>
+                            <p class="wb-delivery-note">Премиум-сборка и настройка BIOS в подарок</p>
+                            <div class="build-actions">
+                                <button class="btn wb-buy-btn">В корзину</button>
+                                <button class="btn wb-secondary-btn">Подробнее</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Дополнительная сборка 6 -->
+                    <div class="build-card wb-style-card">
+                        <div class="build-badge new">NEW</div>
+                        <div class="wb-card-top-actions">
+                            <button class="wb-icon-btn" type="button" aria-label="Добавить в избранное">♡</button>
+                            <button class="wb-icon-btn" type="button" aria-label="Сравнить">⇄</button>
+                        </div>
+                        <div class="build-image pc-photo-frame">
+                            <img src="assets/pcs/pc-03.png" alt="NEON RUSH — игровой ПК" loading="lazy">
+                        </div>
+                        <div class="build-info">
+                            <div class="wb-rating-row">★ 4.7 · 76 отзывов</div>
+                            <h3 class="build-title">NEON RUSH</h3>
+                            <p class="build-subtitle">RX 7800 XT • STREAM READY</p>
+                            <div class="build-specs">
+                                <div class="spec-item"><span>Видеокарта</span><strong>RX 7800 XT 16 GB</strong></div>
+                                <div class="spec-item"><span>Процессор</span><strong>Ryzen 7 7700X</strong></div>
+                                <div class="spec-item"><span>Материнская плата</span><strong>B650M</strong></div>
+                                <div class="spec-item"><span>Оперативная память</span><strong>32 GB DDR5</strong></div>
+                                <div class="spec-item"><span>Накопитель</span><strong>SSD 2 TB NVMe</strong></div>
+                                <div class="spec-item"><span>Блок питания</span><strong>850 W 80+ Gold</strong></div>
+                                <div class="spec-item"><span>Игровой профиль</span><strong>1440p Ultra / стрим</strong></div>
+                            </div>
+                            <div class="build-price wb-price-block">
+                                <span class="current-price">139 990 ₽</span>
+                                <span class="wb-old-price">154 990 ₽</span>
+                                <span class="wb-discount">-10%</span>
+                                <span class="monthly-payment">от 5 830 ₽/мес</span>
+                            </div>
+                            <p class="wb-delivery-note">Сборка с кабель-менеджментом под стекло</p>
+                            <div class="build-actions">
+                                <button class="btn wb-buy-btn">В корзину</button>
+                                <button class="btn wb-secondary-btn">Подробнее</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Дополнительная сборка 7 -->
+                    <div class="build-card wb-style-card">
+                        <div class="build-badge">ХИТ</div>
+                        <div class="wb-card-top-actions">
+                            <button class="wb-icon-btn" type="button" aria-label="Добавить в избранное">♡</button>
+                            <button class="wb-icon-btn" type="button" aria-label="Сравнить">⇄</button>
+                        </div>
+                        <div class="build-image pc-photo-frame">
+                            <img src="assets/pcs/pc-10.png" alt="VORTEX MINI — игровой ПК" loading="lazy">
+                        </div>
+                        <div class="build-info">
+                            <div class="wb-rating-row">★ 4.6 · 204 отзыва</div>
+                            <h3 class="build-title">VORTEX MINI</h3>
+                            <p class="build-subtitle">RTX 4060 • COMPACT</p>
+                            <div class="build-specs">
+                                <div class="spec-item"><span>Видеокарта</span><strong>RTX 4060 8 GB</strong></div>
+                                <div class="spec-item"><span>Процессор</span><strong>Intel i5-13400F</strong></div>
+                                <div class="spec-item"><span>Материнская плата</span><strong>B760M</strong></div>
+                                <div class="spec-item"><span>Оперативная память</span><strong>16 GB DDR5</strong></div>
+                                <div class="spec-item"><span>Накопитель</span><strong>SSD 1 TB NVMe</strong></div>
+                                <div class="spec-item"><span>Блок питания</span><strong>650 W 80+ Bronze</strong></div>
+                                <div class="spec-item"><span>Игровой профиль</span><strong>1080p / 1440p High</strong></div>
+                            </div>
+                            <div class="build-price wb-price-block">
+                                <span class="current-price">89 990 ₽</span>
+                                <span class="wb-old-price">99 990 ₽</span>
+                                <span class="wb-discount">-10%</span>
+                                <span class="monthly-payment">от 3 750 ₽/мес</span>
+                            </div>
+                            <p class="wb-delivery-note">Компактный корпус mATX, тихий режим</p>
+                            <div class="build-actions">
+                                <button class="btn wb-buy-btn">В корзину</button>
+                                <button class="btn wb-secondary-btn">Подробнее</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Дополнительная сборка 8 -->
+                    <div class="build-card wb-style-card">
+                        <div class="build-badge pro">PRO</div>
+                        <div class="wb-card-top-actions">
+                            <button class="wb-icon-btn" type="button" aria-label="Добавить в избранное">♡</button>
+                            <button class="wb-icon-btn" type="button" aria-label="Сравнить">⇄</button>
+                        </div>
+                        <div class="build-image pc-photo-frame">
+                            <img src="assets/pcs/pc-11.png" alt="AURORA MAX — игровой ПК" loading="lazy">
+                        </div>
+                        <div class="build-info">
+                            <div class="wb-rating-row">★ 4.9 · 132 отзыва</div>
+                            <h3 class="build-title">AURORA MAX</h3>
+                            <p class="build-subtitle">RTX 4070 SUPER • CREATOR</p>
+                            <div class="build-specs">
+                                <div class="spec-item"><span>Видеокарта</span><strong>RTX 4070 SUPER 12 GB</strong></div>
+                                <div class="spec-item"><span>Процессор</span><strong>Intel i7-14700F</strong></div>
+                                <div class="spec-item"><span>Материнская плата</span><strong>B760</strong></div>
+                                <div class="spec-item"><span>Оперативная память</span><strong>32 GB DDR5</strong></div>
+                                <div class="spec-item"><span>Накопитель</span><strong>SSD 2 TB NVMe</strong></div>
+                                <div class="spec-item"><span>Блок питания</span><strong>850 W 80+ Gold</strong></div>
+                                <div class="spec-item"><span>Игровой профиль</span><strong>1440p Ultra + монтаж</strong></div>
+                            </div>
+                            <div class="build-price wb-price-block">
+                                <span class="current-price">159 990 ₽</span>
+                                <span class="wb-old-price">177 990 ₽</span>
+                                <span class="wb-discount">-10%</span>
+                                <span class="monthly-payment">от 6 660 ₽/мес</span>
+                            </div>
+                            <p class="wb-delivery-note">Подходит для стрима и контент-мейкинга</p>
+                            <div class="build-actions">
+                                <button class="btn wb-buy-btn">В корзину</button>
+                                <button class="btn wb-secondary-btn">Подробнее</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Дополнительная сборка 9 -->
+                    <div class="build-card wb-style-card">
+                        <div class="build-badge new">4K</div>
+                        <div class="wb-card-top-actions">
+                            <button class="wb-icon-btn" type="button" aria-label="Добавить в избранное">♡</button>
+                            <button class="wb-icon-btn" type="button" aria-label="Сравнить">⇄</button>
+                        </div>
+                        <div class="build-image pc-photo-frame">
+                            <img src="assets/pcs/pc-02.png" alt="TITAN X 4K — игровой ПК" loading="lazy">
+                        </div>
+                        <div class="build-info">
+                            <div class="wb-rating-row">★ 4.9 · 59 отзывов</div>
+                            <h3 class="build-title">TITAN X 4K</h3>
+                            <p class="build-subtitle">RTX 4090 • EXTREME</p>
+                            <div class="build-specs">
+                                <div class="spec-item"><span>Видеокарта</span><strong>RTX 4090 24 GB</strong></div>
+                                <div class="spec-item"><span>Процессор</span><strong>Ryzen 9 7950X3D</strong></div>
+                                <div class="spec-item"><span>Материнская плата</span><strong>X670E</strong></div>
+                                <div class="spec-item"><span>Оперативная память</span><strong>64 GB DDR5</strong></div>
+                                <div class="spec-item"><span>Накопитель</span><strong>SSD 2 TB Gen4</strong></div>
+                                <div class="spec-item"><span>Блок питания</span><strong>1000 W 80+ Platinum</strong></div>
+                                <div class="spec-item"><span>Игровой профиль</span><strong>4K Ultra + RT</strong></div>
+                            </div>
+                            <div class="build-price wb-price-block">
+                                <span class="current-price">329 990 ₽</span>
+                                <span class="wb-old-price">359 990 ₽</span>
+                                <span class="wb-discount">-8%</span>
+                                <span class="monthly-payment">от 13 750 ₽/мес</span>
+                            </div>
+                            <p class="wb-delivery-note">Флагманская сборка, приоритетная доставка</p>
+                            <div class="build-actions">
+                                <button class="btn wb-buy-btn">В корзину</button>
+                                <button class="btn wb-secondary-btn">Подробнее</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>GameTech</h4>
+                    <p>Магазин игровых компьютеров и техники</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Навигация</h4>
+                    <a href="index.html">Главная</a>
+                    <a href="pcs.html">Игровые ПК</a>
+                    <a href="configurator.html">Конфигуратор</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Контакты</h4>
+                    <div>🎮 +7 (800) 555‑35‑35</div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <small>© 2024 GameTech. Игровые компьютеры и техника.</small>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/crypto-js.min.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/header-auth.js"></script>
+    <script src="js/admin.js"></script>
+    <script src="js/cart.js?v=6"></script>
+    <script src="js/reviews.js"></script>
+</body>
+</html>
+
+

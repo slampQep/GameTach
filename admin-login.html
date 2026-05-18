@@ -1,0 +1,190 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Вход в админ-панель - GameTech</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: Arial, sans-serif; 
+            background: #0a0a0a; 
+            color: white; 
+            min-height: 100vh; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+        }
+        
+        .admin-login-container {
+            background: #2a2a2a;
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid #333;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        
+        .admin-logo {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #ff6b00;
+        }
+        
+        h1 {
+            color: #ff6b00;
+            margin-bottom: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #b0b0b0;
+        }
+        
+        input {
+            width: 100%;
+            padding: 12px;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            color: white;
+            font-size: 16px;
+        }
+        
+        button {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #ff6b00, #ff0080);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        .back-link {
+            display: block;
+            margin-top: 20px;
+            color: #00a3ff;
+            text-decoration: none;
+        }
+        
+        .error {
+            color: #ff4444;
+            margin-top: 10px;
+            font-size: 14px;
+            display: none;
+        }
+        
+        .success {
+            color: #00ff88;
+            margin-top: 10px;
+            font-size: 14px;
+            display: none;
+        }
+    </style>
+    <!-- Подключаем общие скрипты авторизации -->
+    <script src="js/crypto-js.min.js"></script>
+    <script src="js/auth.js"></script>
+</head>
+<body>
+    <div class="admin-login-container">
+        <div class="admin-logo">👑</div>
+        <h1>Админ-панель</h1>
+        <p style="color: #b0b0b0; margin-bottom: 30px;">Войдите как администратор</p>
+        
+        <form onsubmit="return adminLogin(event)">
+            <div class="form-group">
+                <label>Email администратора</label>
+                <input type="email" id="adminEmail" placeholder="admin@gametech.ru" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Пароль</label>
+                <input type="password" id="adminPassword" placeholder="Введите пароль" required>
+            </div>
+            
+            <div id="adminError" class="error"></div>
+            <div id="adminSuccess" class="success"></div>
+            
+            <button type="submit">🚪 Войти как администратор</button>
+        </form>
+        
+        <a href="index.html" class="back-link">← Вернуться на сайт</a>
+        <a href="login.html" class="back-link">Войти как обычный пользователь</a>
+        
+        <div style="margin-top: 30px; padding: 15px; background: rgba(255, 107, 0, 0.1); border-radius: 8px; font-size: 14px;">
+            <strong>Тестовые данные:</strong><br>
+            Email: admin@gametech.ru<br>
+            Пароль: Q1w2e3r4t5y6!
+        </div>
+    </div>
+    
+    <script>
+        // Инициализируем админ-базу, чтобы гарантированно был супер-админ
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof initAdminDatabase === 'function') {
+                initAdminDatabase();
+            }
+        });
+
+        // Используем существующую функцию из auth.js
+        function adminLogin(event) {
+            event.preventDefault();
+            
+            const email = document.getElementById('adminEmail').value.trim();
+            const password = document.getElementById('adminPassword').value;
+            
+            // Очищаем сообщения
+            document.getElementById('adminError').style.display = 'none';
+            document.getElementById('adminSuccess').style.display = 'none';
+            
+            // Проверяем наличие auth.js
+            if (typeof loginAsAdmin !== 'function') {
+                showError('Админские функции не загружены. Перезагрузите страницу.');
+                return false;
+            }
+            
+            const result = loginAsAdmin(email, password);
+            
+            if (result.success) {
+                showSuccess('✅ Успешный вход! Перенаправление...');
+                setTimeout(() => {
+                    window.location.href = 'admin.html';
+                }, 1000);
+            } else {
+                showError('❌ ' + result.message);
+            }
+            
+            return false;
+        }
+        
+        function showError(message) {
+            const errorEl = document.getElementById('adminError');
+            errorEl.textContent = message;
+            errorEl.style.display = 'block';
+        }
+        
+        function showSuccess(message) {
+            const successEl = document.getElementById('adminSuccess');
+            successEl.textContent = message;
+            successEl.style.display = 'block';
+        }
+        
+        // Автозаполнение для тестирования
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('adminEmail').value = 'admin@gametech.ru';
+            document.getElementById('adminPassword').value = 'Q1w2e3r4t5y6!';
+        });
+    </script>
+</body>
+</html>

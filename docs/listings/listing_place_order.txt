@@ -1,0 +1,20 @@
+<?php
+// Fragment: api/place_order.php — transaction insert
+$mysqli->begin_transaction();
+
+$stmt = $mysqli->prepare(
+    'INSERT INTO orders (user_id, total, status, placed_at) VALUES (?, ?, "completed", NOW())'
+);
+$stmt->bind_param('id', $userId, $total);
+$stmt->execute();
+$orderId = (int) $mysqli->insert_id;
+
+$stmtItem = $mysqli->prepare(
+    'INSERT INTO order_items (order_id, title, subtitle, item_type, unit_price, qty, line_total)
+     VALUES (?, ?, ?, ?, ?, ?, ?)'
+);
+foreach ($normalized as $row) {
+    $stmtItem->bind_param('isssdid', $orderId, $row['title'], ...);
+    $stmtItem->execute();
+}
+$mysqli->commit();

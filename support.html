@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Поддержка — GameTech</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-main">
+                <a class="brand" href="index.html">
+                    <div class="logo-glow"><span style="color:#fff;font-weight:bold;">GT</span></div>
+                    <span class="brand-name">GameTech</span>
+                </a>
+                <nav class="main-nav">
+                    <a class="nav-link" href="index.html">Главная</a>
+                    <a class="nav-link" href="account.html">Кабинет</a>
+                    <a class="nav-link active" href="support.html">Поддержка</a>
+                    <a class="nav-link" href="contacts.html">Контакты</a>
+                    <span id="headerAuthNav"></span>
+                </nav>
+                <div class="header-actions"><button class="btn-cart">🛒 Корзина <span class="cart-badge">0</span></button></div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="categories-gaming">
+            <div class="container">
+                <h1 class="section-title">Заявка в поддержку</h1>
+                <p style="color:var(--text-secondary);text-align:center;max-width:640px;margin:0 auto 24px;">
+                    Вопрос по заказу, сборке, оплате или гарантии. Заявка сохраняется в MySQL (таблица support_requests).
+                </p>
+
+                <div class="order-card" style="max-width:720px;margin:0 auto;">
+                    <form id="supportForm">
+                        <label>Категория</label>
+                        <select id="supportCategory" style="width:100%;margin-bottom:12px;padding:10px;border-radius:8px;border:1px solid var(--border);background:var(--bg-card);color:var(--text-primary);">
+                            <option value="order">Заказ и доставка</option>
+                            <option value="build">Сборка / конфигуратор</option>
+                            <option value="payment">Оплата и рассрочка</option>
+                            <option value="warranty">Гарантия</option>
+                            <option value="other">Другое</option>
+                        </select>
+                        <label>Телефон</label>
+                        <input type="tel" id="supportPhone" style="width:100%;margin-bottom:12px;padding:10px;border-radius:8px;border:1px solid var(--border);background:var(--bg-card);color:var(--text-primary);" placeholder="+7 ..." />
+                        <label>Описание (минимум 10 символов)</label>
+                        <textarea id="supportDesc" rows="5" style="width:100%;margin-bottom:16px;padding:10px;border-radius:8px;border:1px solid var(--border);background:var(--bg-card);color:var(--text-primary);"></textarea>
+                        <button type="submit" class="btn btn-primary">Отправить заявку</button>
+                        <p id="supportMsg" style="margin-top:12px;color:var(--accent-green);display:none;"></p>
+                    </form>
+                </div>
+
+                <div class="orders-block" style="max-width:720px;margin:32px auto 0;">
+                    <h2>Мои заявки</h2>
+                    <div id="supportList"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/crypto-js.min.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/header-auth.js"></script>
+    <script src="js/cart.js?v=7"></script>
+    <script src="js/support.js?v=2"></script>
+</body>
+</html>

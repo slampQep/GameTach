@@ -1,0 +1,16 @@
+<?php
+function gametech_mysqli(): ?mysqli
+{
+    $host = getenv("GAMETECH_DB_HOST") ?: "127.0.0.1";
+    $user = getenv("GAMETECH_DB_USER") ?: "root";
+    $pass = getenv("GAMETECH_DB_PASS") !== false ? getenv("GAMETECH_DB_PASS") : "";
+    $name = getenv("GAMETECH_DB_NAME") ?: "gametech";
+    $port = (int) (getenv("GAMETECH_DB_PORT") ?: 3306);
+
+    $mysqli = @new mysqli($host, $user, $pass, $name, $port);
+    if ($mysqli->connect_errno) {
+        return null;
+    }
+    $mysqli->set_charset("utf8mb4");
+    return $mysqli;
+}

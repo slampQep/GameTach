@@ -1,0 +1,52 @@
+<svg width="640" height="400" viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="caseGlow" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#00a3ff"/>
+      <stop offset="1" stop-color="#8a2be2"/>
+    </linearGradient>
+    <linearGradient id="fanRing" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#00ff88"/>
+      <stop offset="1" stop-color="#00a3ff"/>
+    </linearGradient>
+  </defs>
+
+  <!-- фон -->
+  <rect x="0" y="0" width="640" height="400" fill="#05070b"/>
+
+  <!-- подложка карты -->
+  <rect x="40" y="40" width="560" height="320" rx="28" fill="#0b0e16" stroke="#182233" stroke-width="2.5"/>
+
+  <!-- корпус ПК -->
+  <rect x="120" y="70" width="190" height="260" rx="20" fill="#05070b" stroke="url(#caseGlow)" stroke-width="4"/>
+  <rect x="130" y="80" width="170" height="240" rx="16" fill="#05070b" stroke="#1f293b" stroke-width="2"/>
+
+  <!-- RGB вентиляторы -->
+  <g transform="translate(0,0)">
+    <circle cx="215" cy="130" r="34" fill="#05070b" stroke="url(#fanRing)" stroke-width="5"/>
+    <circle cx="215" cy="130" r="16" fill="#0b0e16"/>
+
+    <circle cx="215" cy="200" r="34" fill="#05070b" stroke="url(#fanRing)" stroke-width="5"/>
+    <circle cx="215" cy="200" r="16" fill="#0b0e16"/>
+
+    <circle cx="215" cy="270" r="34" fill="#05070b" stroke="url(#fanRing)" stroke-width="5"/>
+    <circle cx="215" cy="270" r="16" fill="#0b0e16"/>
+  </g>
+
+  <!-- декоративные линии внутри корпуса -->
+  <rect x="150" y="95" width="40" height="6" rx="3" fill="#1f293b"/>
+  <rect x="150" y="165" width="50" height="6" rx="3" fill="#1f293b"/>
+  <rect x="150" y="235" width="60" height="6" rx="3" fill="#1f293b"/>
+
+  <!-- правая часть: текст -->
+  <text x="350" y="150" fill="#ffffff" font-family="Segoe UI, system-ui" font-size="24" font-weight="600">
+    CYBER GAMER
+  </text>
+  <text x="350" y="178" fill="#8ad9ff" font-family="Segoe UI, system-ui" font-size="15">
+    RTX 3050 • ENTRY GAMER
+  </text>
+  <text x="350" y="210" fill="#9aa3c5" font-family="Segoe UI, system-ui" font-size="13">
+    Оптимален для CS2, Dota 2, Valorant и других киберспортивных игр.
+  </text>
+</svg>
+
+

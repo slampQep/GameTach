@@ -1,0 +1,14 @@
+// Fragment: js/cart.js — checkout via API
+return fetch("api/place_order.php", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    email: email,
+    items: mapItemsToOrderLines(items)
+  })
+})
+  .then(function (r) {
+    return r.json().then(function (data) {
+      return { ok: r.ok, data: data };
+    });
+  });
