@@ -1,0 +1,15 @@
+# Локальные секреты БД (пароли хостинга)
+api/config.local.php
+
+# Open Server / ОС
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Временные и личные
+*.log
+.env
+.env.local
+
+# Word / сборки диплома (по желанию оставьте в репо)
+# docs/DIPLOM_GAMETECH_FULL.docx
